@@ -1,47 +1,12 @@
 {{ config(materialized = 'incremental',  incremental_strategy = 'append') }}
 
 
-with stg as 
+with source as 
 (
-    select * from {{ ref('stg_legacy_estructura_organica')}} 
+    select * from {{ ref('estructura_organica')}} 
 
 )
 
-, centro_gestor as (SELECT CENTRO_GESTOR 
-    , DESCRIPCION_CORTA AS DESCRIPCION_CORTA_CENTRO_GESTOR
-    , DESCRIPCION_LARGA AS DESCRIPCION_LARGA_CENTRO_GESTOR
-    , UPDATE_AT
-FROM STG
-    WHERE length(CENTRO_GESTOR) = 10
- )
-, L1 as 
-(
-    SELECT CENTRO_GESTOR L1
-    , DESCRIPCION_CORTA AS DESCRIPCION_CORTA_L1
-    , DESCRIPCION_LARGA AS DESCRIPCION_LARGA_L1
-    ,UPDATE_AT
-FROM STG
-    WHERE length(CENTRO_GESTOR) = 2
- )
-,  L2 as 
-(
-    SELECT CENTRO_GESTOR L2
-    , DESCRIPCION_CORTA AS DESCRIPCION_CORTA_L2
-    , DESCRIPCION_LARGA AS DESCRIPCION_LARGA_L2
-    , UPDATE_AT
-FROM STG
-    WHERE length(CENTRO_GESTOR) = 4
- ),
-
-L3 as 
-(
-    SELECT CENTRO_GESTOR  L3
-    , DESCRIPCION_CORTA AS DESCRIPCION_CORTA_L3
-    , DESCRIPCION_LARGA AS DESCRIPCION_LARGA_L3
-    , UPDATE_AT
-FROM STG
-    WHERE length(CENTRO_GESTOR) = 6
- )
 
 select CENTRO_GESTOR
 , DESCRIPCION_CORTA_CENTRO_GESTOR
@@ -52,14 +17,10 @@ select CENTRO_GESTOR
 , DESCRIPCION_LARGA_L2
 , DESCRIPCION_CORTA_L3
 , DESCRIPCION_LARGA_L3
-, GREATEST(CENTRO_GESTOR.UPDATE_AT, L1.UPDATE_AT, L2.UPDATE_AT, L3.UPDATE_AT) UPDATE_AT
-from centro_gestor
-inner join l1 on  L1.L1 = substr(centro_gestor.centro_gestor,1,2)
-inner join l2 on  L2.L2 = substr(centro_gestor.centro_gestor,1,4)
-inner join l3 on  L3.L3 = substr(centro_gestor.centro_gestor,1,6)
-{% if is_incremental() %}
-    where GREATEST(CENTRO_GESTOR.UPDATE_AT,L1.UPDATE_AT, L2.UPDATE_AT , L3.UPDATE_AT) > ( Select max(update_at) from {{ this }})
-  {% endif %}
+, dbt_updated_at UPDATE_AT
+, dbt_valid_from valid_from
+, dbt_valid_to valid_to
+from source
 
 
 
