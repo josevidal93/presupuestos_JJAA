@@ -7,7 +7,7 @@ models:
           - join: dim_estr_organica
             sql_on: ${dim_estr_organica.centro_gestor} = ${fct_gastos.organica_id}
           - join: dim_estr_funcional
-            sql_on: ${dim_estr_funcional.subfuncion} = ${fct_gastos.financiacion}
+            sql_on: ${dim_estr_funcional.subfuncion} = ${fct_gastos.funcional_id}
           - join: dim_estr_economica
             sql_on: ${dim_estr_economica.subconcepto} = ${fct_gastos.economica_id} and ${dim_estr_economica.gasto_ingreso} = 'G'
           - join: dim_estr_financiacion
