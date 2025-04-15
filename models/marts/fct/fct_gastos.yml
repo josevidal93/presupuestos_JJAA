@@ -9,7 +9,7 @@ models:
           - join: dim_estr_funcional
             sql_on: ${dim_estr_funcional.subfuncion} = ${fct_gastos.financiacion}
           - join: dim_estr_economica
-            sql_on: ${dim_estr_economica.subconceto} = ${fct_gastos.economica_id} and ${dim_estr_economica.gasto_ingreso} = 'G'
+            sql_on: ${dim_estr_economica.subconcepto} = ${fct_gastos.economica_id} and ${dim_estr_economica.gasto_ingreso} = 'G'
           - join: dim_estr_financiacion
             sql_on: ${dim_estr_financiacion.financiacion} = ${fct_gastos.financiacion_id} and ${dim_estr_financiacion.gasto_ingreso} = 'G' 
 
