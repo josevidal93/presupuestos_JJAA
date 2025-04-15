@@ -1,0 +1,11 @@
+version: 2
+
+models:
+  - name: fct_gastos
+    columns:
+      - name: organica_id
+      - name: economica_id
+      - name: financiacion_id
+      - name: date_day
+      - name: importe
+
