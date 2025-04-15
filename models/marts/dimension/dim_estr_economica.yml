@@ -1,7 +1,7 @@
 version: 2
 
 models:
-  - name: dim_estructura_economica
+  - name: dim_estr_economica
     description: >
       Dimensión de la estructura económica que descompone la codificación en niveles jerárquicos:
       capítulo, artículo, concepto y subconcepto, diferenciando entre gasto e ingreso.

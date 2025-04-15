@@ -1,7 +1,7 @@
 version: 2
 
 models:
-  - name: dim_estructura_financiacion
+  - name: dim_estr_financiacion
     description: >
       Dimensión de la estructura de financiación que incluye codificación por origen, fondo y financiación,
       separada por tipo de gasto o ingreso.
