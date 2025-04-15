@@ -2,6 +2,8 @@ version: 2
 
 models:
       - name: dim_estr_funcional
+        tags: ['lightdash']
+
         description: >
           Dimensión que contiene información relacionada con la estructura funcional, que se organiza en tres niveles:
           GRUPO, FUNCION y SUBFUNCION. Esta tabla se usa para representar la jerarquía funcional de una organización.

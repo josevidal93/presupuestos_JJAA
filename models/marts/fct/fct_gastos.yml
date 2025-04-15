@@ -2,6 +2,7 @@ version: 2
 
 models:
   - name: fct_gastos
+    tags: ['lightdash']
     meta:
         joins:
           - join: dim_estr_organica
