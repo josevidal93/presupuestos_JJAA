@@ -2,6 +2,13 @@ version: 2
 
 models:
   - name: fct_ingresos
+    meta:
+          joins:
+            - join: dim_estr_organica
+              sql_on: ${dim_estr_organica.centro_gestor} = ${fct_ingresos.organica_id}
+            - join: dim_estr_funcional
+              sql_on: ${dim_estr_funcional.SUBFUNCION} = ${fct_ingresos.funcional_id}
+
     columns:
       - name: organica_id
       - name: funcional_id
