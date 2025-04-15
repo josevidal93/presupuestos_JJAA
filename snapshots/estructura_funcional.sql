@@ -12,7 +12,7 @@
     )
 }}
 
-select * from  {{ ref('dim_estr_funcional')}}
+select * from  {{ ref('dim_int_estr_funcional')}}
 
 
 {% endsnapshot %}

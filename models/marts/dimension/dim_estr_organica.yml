@@ -35,3 +35,7 @@ models:
          
       - name: update_at
         description: Fecha de la última actualización, basada en el máximo de `update_at` de los niveles L1, L2, L3 y centro gestor.
+      - name: valid_from
+        description: Fecha inicio de validez del registro (<=)
+      - name: valid_to
+        description: Fecha fin de validez del registro (>)        

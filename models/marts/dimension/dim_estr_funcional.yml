@@ -35,4 +35,7 @@ models:
             
           - name: update_at
             description: Fecha de la última actualización de los registros. Determinada por el valor más reciente entre los tres niveles (GRUPO, FUNCION y SUBFUNCION).
-            
+          - name: valid_from
+            description: Fecha inicio de validez del registro (<=)
+          - name: valid_to
+            description: Fecha fin de validez del registro (>)            

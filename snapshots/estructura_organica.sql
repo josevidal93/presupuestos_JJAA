@@ -12,7 +12,7 @@
     )
 }}
 
-select * from  {{ ref('dim_estr_organica')}}
+select * from  {{ ref('dim_int_estr_organica')}}
 
 
 {% endsnapshot %}

@@ -13,7 +13,7 @@
     )
 }}
 
-select * from  {{ ref('dim_estr_financiacion')}}
+select * from  {{ ref('dim_int_estr_financiacion')}}
 
 
 {% endsnapshot %}
