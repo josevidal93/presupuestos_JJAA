@@ -10,7 +10,9 @@ models:
               sql_on: ${dim_estr_economica.subconcepto} = ${fct_ingresos.economica_id} and ${dim_estr_economica.gasto_ingreso} = 'I'
             - join: dim_estr_financiacion
               sql_on: ${dim_estr_financiacion.financiacion} = ${fct_ingresos.financiacion_id} and ${dim_estr_financiacion.gasto_ingreso} = 'I'
-
+            - join : dim_tiempo
+              sql_on: ${fct_ingresos.date_day} = ${dim_tiempo.fecha}
+                      
           
     columns:
       - name: organica_id

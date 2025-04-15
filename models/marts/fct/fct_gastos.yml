@@ -12,7 +12,8 @@ models:
             sql_on: ${dim_estr_economica.subconcepto} = ${fct_gastos.economica_id} and ${dim_estr_economica.gasto_ingreso} = 'G'
           - join: dim_estr_financiacion
             sql_on: ${dim_estr_financiacion.financiacion} = ${fct_gastos.financiacion_id} and ${dim_estr_financiacion.gasto_ingreso} = 'G' 
-
+          - join : dim_tiempo
+            sql_on: ${fct_gastos.date_day} = ${dim_tiempo.fecha}
           
 
     columns:
