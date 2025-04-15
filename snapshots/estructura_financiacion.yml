@@ -1,0 +1,49 @@
+version: 2
+
+models:
+  - name: dim_estructura_financiacion
+    description: >
+      Dimensión que captura información de financiación, incluyendo el gasto/ingreso, origen,
+      fondo, y descripción de la financiación. Utiliza la estrategia incremental para solo añadir
+      registros nuevos o actualizados.
+    columns:
+      - name: gasto_ingreso
+        description: Tipo de gasto o ingreso relacionado con la financiación.
+        meta:
+          dimension: true
+      - name: origen
+        description: Origen de la financiación.
+        meta:
+          dimension: true
+      - name: fondo
+        description: Fondo relacionado con la financiación.
+        meta:
+          dimension: true
+      - name: financiacion
+        description: Tipo de financiación utilizado.
+        meta:
+          dimension: true
+      - name: descripcion_corta_financiacion
+        description: Descripción corta de la financiación.
+        meta:
+          dimension: true
+      - name: descripcion_larga_financiacion
+        description: Descripción larga de la financiación.
+        meta:
+          dimension: true
+      - name: update_at
+        description: Fecha de la última actualización de la financiación.
+        meta:
+          dimension: true
+      - name: dbt_valid_from
+        description: Fecha desde la cual el registro es válido en el modelo incremental.
+        meta:
+          dimension: true
+      - name: dbt_valid_to
+        description: Fecha hasta la cual el registro es válido. Null si el registro es actual.
+        meta:
+          dimension: true
+      - name: dbt_scd_id
+        description: Identificador único de la versión del registro en el proceso incremental SCD2.
+        meta:
+          dimension: true

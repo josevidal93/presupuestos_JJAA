@@ -3,7 +3,9 @@ with gastos as (
     group by 1,2,3,4
 )
 , ingresos as (
-    select * from {{ ref( 'fct_ingresos')}}
+
+    select organica_id,economica_id,FINANCIACION_id,date_day,sum(IMPORTE) importe from {{ ref('fct_ingresos')}}
+    group by 1,2,3,4
 )
 
 select * from gastos 
@@ -14,5 +16,6 @@ and gastos.FINANCIACION_id = ingresos.FINANCIACION_id
 and gastos.date_day = ingresos.date_day
 where (gastos.FINANCIACION_id = '0101'
 or ingresos.FINANCIACION_id = '0101')
-and ( gastos.funcional_id = '11A'
-or ingresos.funcional_id = '11A' ) 
+and (gastos.organica_id = '0100010000'
+or ingresos.organica_id = '0100010000')
+

@@ -1,0 +1,94 @@
+version: 2
+
+models:
+  - name: dim_estr_organica
+    description: >
+      Dimensión que contiene información sobre la estructura orgánica, incluyendo detalles de centros gestores y su 
+      descripción a diferentes niveles (L1, L2, L3) en función de la longitud del código del centro gestor.
+    columns:
+      - name: centro_gestor
+        description: Código del centro gestor.
+        meta:
+          dimension: true
+      - name: descripcion_corta_centro_gestor
+        description: Descripción corta del centro gestor.
+        meta:
+          dimension: true
+      - name: descripcion_larga_centro_gestor
+        description: Descripción larga del centro gestor.
+        meta:
+          dimension: true
+      - name: descripcion_corta_l1
+        description: Descripción corta de nivel L1 (subnivel del centro gestor).
+        meta:
+          dimension: true
+      - name: descripcion_larga_l1
+        description: Descripción larga de nivel L1.
+        meta:
+          dimension: true
+      - name: descripcion_corta_l2
+        description: Descripción corta de nivel L2 (subnivel del centro gestor).
+        meta:
+          dimension: true
+      - name: descripcion_larga_l2
+        description: Descripción larga de nivel L2.
+        meta:
+          dimension: true
+      - name: descripcion_corta_l3
+        description: Descripción corta de nivel L3 (subnivel del centro gestor).
+        meta:
+          dimension: true
+      - name: descripcion_larga_l3
+        description: Descripción larga de nivel L3.
+        meta:
+          dimension: true
+      - name: update_at
+        description: Fecha de la última actualización, basada en el máximo de `update_at` de los niveles L1, L2, L3 y centro gestor.
+        meta:
+          dimension: true
+
+      - name: dim_estr_funcional
+        description: >
+          Dimensión que contiene información relacionada con la estructura funcional, que se organiza en tres niveles:
+          GRUPO, FUNCION y SUBFUNCION. Esta tabla se usa para representar la jerarquía funcional de una organización.
+        columns:
+          - name: grupo
+            description: Código del grupo funcional.
+            meta:
+              dimension: true
+          - name: funcion
+            description: Código de la función dentro del grupo funcional.
+            meta:
+              dimension: true
+          - name: subfuncion
+            description: Código de la subfunción dentro de la función.
+            meta:
+              dimension: true
+          - name: descripcion_corta_grupo
+            description: Descripción corta del grupo funcional.
+            meta:
+              dimension: true
+          - name: descripcion_larga_grupo
+            description: Descripción larga del grupo funcional.
+            meta:
+              dimension: true
+          - name: descripcion_corta_funcion
+            description: Descripción corta de la función dentro del grupo funcional.
+            meta:
+              dimension: true
+          - name: descripcion_larga_funcion
+            description: Descripción larga de la función dentro del grupo funcional.
+            meta:
+              dimension: true
+          - name: descripcion_corta_subfuncion
+            description: Descripción corta de la subfunción dentro de la función.
+            meta:
+              dimension: true
+          - name: descripcion_larga_subfuncion
+            description: Descripción larga de la subfunción dentro de la función.
+            meta:
+              dimension: true
+          - name: update_at
+            description: Fecha de la última actualización de los registros. Determinada por el valor más reciente entre los tres niveles (GRUPO, FUNCION y SUBFUNCION).
+            meta:
+              dimension: true

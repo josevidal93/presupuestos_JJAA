@@ -1,0 +1,37 @@
+version: 2
+
+snapshots:
+  - name: estructura_organica
+    description: |
+      Este snapshot captura la estructura orgánica de la Junta de Andalucía. 
+      Se utiliza la estrategia de timestamp para detectar los cambios en los registros 
+      y actualizar el histórico de los mismos.
+
+    config:
+      target_database: junta_andalucia
+      target_schema: "{{ target.schema }}_snapshot"
+      unique_key: centro_gestor
+      strategy: timestamp
+      updated_at: update_at
+
+    columns:
+      - name: centro_gestor
+        description: |
+          El identificador único del centro gestor. Es la clave primaria que se utiliza 
+          para determinar si un registro es nuevo o ha cambiado en cada snapshot.
+
+      - name: descripcion_corta
+        description: |
+          Descripción corta del centro gestor.
+
+      - name: descripcion_larga
+        description: |
+          Descripción larga del centro gestor.
+
+      - name: update_at
+        description: |
+          Marca temporal que indica cuándo se actualizó por última vez el registro.
+
+    meta:
+      owner: equipo_data_analytics
+      last_updated: "2025-04-11"

@@ -1,0 +1,76 @@
+version: 2
+
+models:
+  - name: dim_estructura_economica
+    description: >
+      Dimensión que captura la estructura económica por capítulo, artículo, concepto y subconcepto.
+      Utiliza la estrategia SCD2 para mantener el historial de cambios en función de la fecha de actualización.
+    columns:
+      - name: gasto_ingreso
+        description: Tipo de gasto o ingreso de la estructura económica.
+        meta:
+          dimension: true
+      - name: capitulo
+        description: El capítulo de la estructura económica.
+        meta:
+          dimension: true
+      - name: descripcion_corta_capitulo
+        description: Descripción corta del capítulo.
+        meta:
+          dimension: true
+      - name: descripcion_larga_capitulo
+        description: Descripción larga del capítulo.
+        meta:
+          dimension: true
+      - name: articulo
+        description: El artículo dentro de la estructura económica.
+        meta:
+          dimension: true
+      - name: descripcion_corta_articulo
+        description: Descripción corta del artículo.
+        meta:
+          dimension: true
+      - name: descripcion_larga_articulo
+        description: Descripción larga del artículo.
+        meta:
+          dimension: true
+      - name: concepto
+        description: El concepto dentro de la estructura económica.
+        meta:
+          dimension: true
+      - name: descripcion_corta_concepto
+        description: Descripción corta del concepto.
+        meta:
+          dimension: true
+      - name: descripcion_larga_concepto
+        description: Descripción larga del concepto.
+        meta:
+          dimension: true
+      - name: subconcepto
+        description: Subconcepto de la estructura económica.
+        meta:
+          dimension: true
+      - name: descripcion_corta_subconcepto
+        description: Descripción corta del subconcepto.
+        meta:
+          dimension: true
+      - name: descripcion_larga_subconcepto
+        description: Descripción larga del subconcepto.
+        meta:
+          dimension: true
+      - name: update_at
+        description: Fecha y hora de la última actualización para detectar cambios.
+        meta:
+          dimension: true
+      - name: dbt_valid_from
+        description: Fecha de inicio de la validez de esta versión del registro.
+        meta:
+          dimension: true
+      - name: dbt_valid_to
+        description: Fecha de fin de la validez de esta versión del registro. Null si la versión está activa.
+        meta:
+          dimension: true
+      - name: dbt_scd_id
+        description: Identificador único de la versión del registro en el proceso SCD2.
+        meta:
+          dimension: true
