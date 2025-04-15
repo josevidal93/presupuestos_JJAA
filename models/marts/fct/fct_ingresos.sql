@@ -1,3 +1,4 @@
+{{ config(    materialized = 'incremental',     incremental_strategy = 'append' ) }}
 
 with stg as (
     select *  from 

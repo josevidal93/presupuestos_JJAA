@@ -1,3 +1,5 @@
+{{ config(    materialized = 'incremental',     incremental_strategy = 'append' ) }}
+
 
 with stg as (
     select *  from 
@@ -5,7 +7,7 @@ with stg as (
 )
 , dim_estr_economica_snapshot as (
     select * from {{ ref('estructura_economica')}}
-    where gasto_ingreso = 'G' and dbt_valid_from = '2015-01-01'
+    where gasto_ingreso = 'G' 
 )
 , dim_estr_financiacion_snapshot as (
     select * from {{ ref('estructura_financiacion')}}

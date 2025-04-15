@@ -1,0 +1,14 @@
+version: 2
+
+models:
+  - name: dim_tiempo
+    columns:
+      - name: fecha
+      - name: anio
+      - name: mes
+      - name: nombre_mes
+      - name: dia
+      - name: trimestre
+      - name: dia_semana
+      - name: nombre_dia_semana
+      - name: es_fin_de_semana
