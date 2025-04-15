@@ -8,44 +8,33 @@ models:
     columns:
       - name: centro_gestor
         description: Código del centro gestor.
-        meta:
-          dimension: true
+         
       - name: descripcion_corta_centro_gestor
         description: Descripción corta del centro gestor.
-        meta:
-          dimension: true
+         
       - name: descripcion_larga_centro_gestor
         description: Descripción larga del centro gestor.
-        meta:
-          dimension: true
+         
       - name: descripcion_corta_l1
         description: Descripción corta de nivel L1 (subnivel del centro gestor).
-        meta:
-          dimension: true
+         
       - name: descripcion_larga_l1
         description: Descripción larga de nivel L1.
-        meta:
-          dimension: true
+         
       - name: descripcion_corta_l2
         description: Descripción corta de nivel L2 (subnivel del centro gestor).
-        meta:
-          dimension: true
+         
       - name: descripcion_larga_l2
         description: Descripción larga de nivel L2.
-        meta:
-          dimension: true
+         
       - name: descripcion_corta_l3
         description: Descripción corta de nivel L3 (subnivel del centro gestor).
-        meta:
-          dimension: true
+         
       - name: descripcion_larga_l3
         description: Descripción larga de nivel L3.
-        meta:
-          dimension: true
+         
       - name: update_at
         description: Fecha de la última actualización, basada en el máximo de `update_at` de los niveles L1, L2, L3 y centro gestor.
-        meta:
-          dimension: true
 
       - name: dim_estr_funcional
         description: >
