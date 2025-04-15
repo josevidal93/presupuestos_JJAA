@@ -21,7 +21,6 @@ with stg as (
 )
 
 select stg.CENTRO_GESTOR as organica_id
-       --,stg.funcional as funcional_id
        ,stg.economica as economica_id
        ,stg.FINANCIACION as FINANCIACION_id
        ,stg.update_at as date_day
