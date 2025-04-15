@@ -1,0 +1,23 @@
+version: 2
+
+models:
+  - name: dim_estructura_financiacion
+    description: >
+      Dimensión de la estructura de financiación que incluye codificación por origen, fondo y financiación,
+      separada por tipo de gasto o ingreso.
+    columns:
+      - name: gasto_ingreso
+        description: Indica si se trata de un registro de gasto (G) o ingreso (I).
+      - name: origen
+        description: Código del origen de la financiación.
+      - name: fondo
+        description: Código del fondo de financiación.
+      - name: financiacion
+        description: Código de la financiación.
+      - name: descripcion_corta_financiacion
+        description: Descripción corta del tipo de financiación.
+      - name: descripcion_larga_financiacion
+        description: Descripción larga del tipo de financiación.
+      - name: update_at
+        description: Fecha de la última actualización del registro.
+

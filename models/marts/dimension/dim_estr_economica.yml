@@ -1,0 +1,37 @@
+version: 2
+
+models:
+  - name: dim_estructura_economica
+    description: >
+      Dimensión de la estructura económica que descompone la codificación en niveles jerárquicos:
+      capítulo, artículo, concepto y subconcepto, diferenciando entre gasto e ingreso.
+    columns:
+      - name: gasto_ingreso
+        description: Indica si se trata de un registro de gasto (G) o ingreso (I).
+      - name: capitulo
+        description: Código del capítulo económico.
+      - name: descripcion_corta_capitulo
+        description: Descripción corta del capítulo económico.
+      - name: descripcion_larga_capitulo
+        description: Descripción larga del capítulo económico.
+      - name: articulo
+        description: Código del artículo económico.
+      - name: descripcion_corta_articulo
+        description: Descripción corta del artículo económico.
+      - name: descripcion_larga_articulo
+        description: Descripción larga del artículo económico.
+      - name: concepto
+        description: Código del concepto económico.
+      - name: descripcion_corta_concepto
+        description: Descripción corta del concepto económico.
+      - name: descripcion_larga_concepto
+        description: Descripción larga del concepto económico.
+      - name: subconcepto
+        description: Código del subconcepto económico.
+      - name: descripcion_corta_subconcepto
+        description: Descripción corta del subconcepto económico.
+      - name: descripcion_larga_subconcepto
+        description: Descripción larga del subconcepto económico.
+      - name: update_at
+        description: Fecha de la última actualización detectada para este registro.
+

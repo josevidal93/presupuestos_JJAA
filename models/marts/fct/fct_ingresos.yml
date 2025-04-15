@@ -6,6 +6,11 @@ models:
           joins:
             - join: dim_estr_organica
               sql_on: ${dim_estr_organica.centro_gestor} = ${fct_ingresos.organica_id}
+            - join: dim_estr_economica
+              sql_on: ${dim_estr_economica.subfuncion} = ${fct_ingresos.economica_id} and ${dim_estr_economica.gasto_ingreso} = 'I'
+            - join: dim_estr_financiacion
+              sql_on: ${dim_estr_financiacion.financiacion} = ${fct_ingresos.financiacion_id} and ${dim_estr_financiacion.gasto_ingreso} = 'I'
+
           
     columns:
       - name: organica_id
