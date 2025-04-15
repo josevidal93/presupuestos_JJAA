@@ -1,5 +1,5 @@
 with gastos as (
-    select organica_id,economica_id,FINANCIACION_id,date_day,sum(IMPORTE) importe from {{ ref('fct_presupuesto')}}
+    select organica_id,economica_id,FINANCIACION_id,date_day,sum(IMPORTE) importe from {{ ref('fct_gastos')}}
     group by 1,2,3,4
 )
 , ingresos as (
