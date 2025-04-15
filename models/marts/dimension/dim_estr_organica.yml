@@ -54,41 +54,31 @@ models:
         columns:
           - name: grupo
             description: Código del grupo funcional.
-            meta:
-              dimension: true
+            
           - name: funcion
             description: Código de la función dentro del grupo funcional.
-            meta:
-              dimension: true
+            
           - name: subfuncion
             description: Código de la subfunción dentro de la función.
-            meta:
-              dimension: true
+            
           - name: descripcion_corta_grupo
             description: Descripción corta del grupo funcional.
-            meta:
-              dimension: true
+            
           - name: descripcion_larga_grupo
             description: Descripción larga del grupo funcional.
-            meta:
-              dimension: true
+            
           - name: descripcion_corta_funcion
             description: Descripción corta de la función dentro del grupo funcional.
-            meta:
-              dimension: true
+            
           - name: descripcion_larga_funcion
             description: Descripción larga de la función dentro del grupo funcional.
-            meta:
-              dimension: true
+            
           - name: descripcion_corta_subfuncion
             description: Descripción corta de la subfunción dentro de la función.
-            meta:
-              dimension: true
+            
           - name: descripcion_larga_subfuncion
             description: Descripción larga de la subfunción dentro de la función.
-            meta:
-              dimension: true
+            
           - name: update_at
             description: Fecha de la última actualización de los registros. Determinada por el valor más reciente entre los tres niveles (GRUPO, FUNCION y SUBFUNCION).
-            meta:
-              dimension: true
+            
