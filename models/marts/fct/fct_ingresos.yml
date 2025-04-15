@@ -5,11 +5,11 @@ models:
     meta:
           joins:
             - join: dim_estr_organica
-              sql_on: ${dim_estr_organica.centro_gestor} = ${fct_ingresos.organica_id}
+              sql_on: ${dim_estr_organica.centro_gestor} = ${fct_ingresos.organica_id} and ${dim_estr_organica.valid_from} <= ${fct_gastos.date_day} and ((${dim_estr_organica.valid_to} > ${fct_gastos.date_day} OR ${dim_estr_organica.valid_to} IS NULL))
             - join: dim_estr_economica
-              sql_on: ${dim_estr_economica.subconcepto} = ${fct_ingresos.economica_id} and ${dim_estr_economica.gasto_ingreso} = 'I'
+              sql_on: ${dim_estr_economica.subconcepto} = ${fct_ingresos.economica_id} and ${dim_estr_economica.gasto_ingreso} = 'I'  and ${dim_estr_economica.valid_from} <= ${fct_gastos.date_day} and ((${dim_estr_economica.valid_to} > ${fct_gastos.date_day} OR ${dim_estr_economica.valid_to} IS NULL))
             - join: dim_estr_financiacion
-              sql_on: ${dim_estr_financiacion.financiacion} = ${fct_ingresos.financiacion_id} and ${dim_estr_financiacion.gasto_ingreso} = 'I'
+              sql_on: ${dim_estr_financiacion.financiacion} = ${fct_ingresos.financiacion_id} and ${dim_estr_financiacion.gasto_ingreso} = 'I' and ${dim_estr_financiacion.valid_from} <= ${fct_gastos.date_day} and ((${dim_estr_financiacion.valid_to} > ${fct_gastos.date_day} OR ${dim_estr_financiacion.valid_to} IS NULL))
             - join : dim_tiempo
               sql_on: ${fct_ingresos.date_day} = ${dim_tiempo.fecha}
                       
