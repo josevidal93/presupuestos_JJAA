@@ -1,0 +1,59 @@
+{{ config(materialized = 'incremental',  incremental_strategy = 'append') }}
+
+with source as (
+        select * from {{ ref('stg_legacy_estructura_funcional') }} 
+  ),
+  GRUPO as (
+      select
+          GRUPO 
+          , "DESCRIPCION CORTA" AS DESCRIPCION_CORTA_GRUPO
+          , "DESCRIPCION LARGA" AS DESCRIPCION_LARGA_GRUPO
+          , UPDATE_AT
+      from source
+      WHERE GRUPO IS NOT NULL 
+        AND FUNCION IS NULL
+        AND SUBFUNCION IS NULL
+   )
+  , FUNCION AS (
+        select
+            FUNCION 
+            , "DESCRIPCION CORTA" AS DESCRIPCION_CORTA_FUNCION
+            , "DESCRIPCION LARGA" AS DESCRIPCION_LARGA_FUNCION
+            , UPDATE_AT
+        from source
+        WHERE GRUPO IS NOT NULL 
+        AND FUNCION IS NOT NULL
+        AND SUBFUNCION IS NULL
+   )
+  , SUBFUNCION AS (
+        select
+            GRUPO
+            ,FUNCION
+            ,SUBFUNCION
+            , "DESCRIPCION CORTA" AS DESCRIPCION_CORTA_SUBFUNCION
+            , "DESCRIPCION LARGA" AS DESCRIPCION_LARGA_SUBFUNCION
+            , UPDATE_AT
+        from source
+        WHERE GRUPO IS NOT NULL 
+        AND FUNCION IS NOT NULL
+        AND SUBFUNCION IS NOT NULL
+   )
+   
+  select SUBFUNCION.GRUPO
+  ,SUBFUNCION.FUNCION
+  ,SUBFUNCION.SUBFUNCION
+  , DESCRIPCION_CORTA_GRUPO
+  , DESCRIPCION_LARGA_GRUPO
+  , DESCRIPCION_CORTA_FUNCION
+  , DESCRIPCION_LARGA_FUNCION
+  , DESCRIPCION_CORTA_SUBFUNCION
+  , DESCRIPCION_LARGA_SUBFUNCION
+  ,GREATEST(GRUPO.UPDATE_AT,FUNCION.UPDATE_AT, SUBFUNCION.UPDATE_AT) AS UPDATE_AT
+  FROM SUBFUNCION
+  INNER JOIN FUNCION ON FUNCION.FUNCION = SUBFUNCION.FUNCION
+  INNER JOIN GRUPO ON GRUPO.GRUPO = SUBFUNCION.GRUPO
+{% if is_incremental() %}
+    where GREATEST(GRUPO.UPDATE_AT,FUNCION.UPDATE_AT, SUBFUNCION.UPDATE_AT) > ( Select max(update_at) from {{ this }})
+  {% endif %}
+
+    

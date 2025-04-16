@@ -1,0 +1,37 @@
+version: 2
+
+sources:
+  - name: legacy
+    database: raw_jjaa
+    schema: legacy
+    tables:
+      - name: gastos
+        columns:
+          - name: ejercicio
+            test:
+              - not null
+      - name: ingresos
+        columns:
+            - name: ejercicio
+              test:
+                - not null
+      - name: estructura_economica
+        columns:
+            - name: ejercicio
+              test:
+                - not null
+      - name: estructura_funcional
+        columns:
+            - name: ejercicio
+              test:
+                - not null
+      - name: estructura_financiacion
+        columns:
+            - name: ejercicio
+              test:
+                - not null
+      - name: estructura_organica
+        columns:
+            - name: ejercicio
+              test:
+                - not null
