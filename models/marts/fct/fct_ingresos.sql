@@ -12,10 +12,6 @@ with stg as (
     select * from {{ ref('estructura_financiacion')}}
     where gasto_ingreso = 'I'
 )
-, dim_estr_funcional_snapshot as
-(
-    select * from {{ ref('estructura_funcional')}}
-)
 , dim_estr_organica_snapshot as
 (
     select * from {{ ref('estructura_organica')}}

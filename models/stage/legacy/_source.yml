@@ -10,6 +10,8 @@ sources:
           - name: ejercicio
             test:
               - not null
+          - name: importe
+          
       - name: ingresos
         columns:
             - name: ejercicio
