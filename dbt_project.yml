@@ -30,9 +30,9 @@ clean-targets:         # directories to be removed by `dbt clean`
 # directory as views. These settings can be overridden in the individual model
 # files using the `{{ config(...) }}` macro.
 models:
-  Presupuesto_JJAA:
-    # Config indicated by + and applies to all files under models/example/
-    marts:
-      +materialized: table
-    staging:
-      +materialized: table
+  stage:
+    +materialized: table
+    +schema: stg  # Todos los modelos en models/stage/* irán al esquema `stg`
+  marts:
+    +materialized: table
+    +schema: mart  # Todos los modelos en models/marts/* irán al esquema `mart`

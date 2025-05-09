@@ -1,3 +1,8 @@
+{{ config(
+    materialized='table'
+    ,schema = 'stg'
+) }}
+
 with source as (
         select * from {{ source('legacy', 'ingresos') }}
         {{ param_execution() }}

@@ -1,3 +1,9 @@
+{{ config(
+    materialized='table'
+    ,schema = 'stg'
+) }}
+
+
 with source as (
         select * from {{ source('legacy', 'estructura_economica') }}
         {{ param_execution() }}
